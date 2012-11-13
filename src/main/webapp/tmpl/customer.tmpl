@@ -1,0 +1,79 @@
+<script type="text/template" id="customer-tmpl">
+<% _.each(customers, function(customer) { 
+    if ( Modernizr.mq( "only all and (max-width: 640px)" ) ) {
+    %>
+    <tr class="columnNames">
+        <td>Id</td>
+        <td>Title</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Phone #</td>
+        <td>Email</td>
+        <td>REST URL</td>
+    </tr>
+    <%
+    }
+    %>
+	<tr class="customer">
+		<td><%=customer.id%></td>
+		<td><%=customer.title%></td>
+		<td><%=customer.name%></td>
+		<td><%=customer.poBox%><p><%=customer.street%><p><%=customer.city%><p><%=customer.region%><p><%=customer.postalCode%><p><%=customer.country%></td>
+		<td><%=customer.phoneNumber%></td>
+		<td><%=customer.email%></td>
+		<td><a href="rest/customers/<%=customer.id%>" rel="external" target="_blank" class="resturl ui-link">JSON</a></td>
+	</tr>
+<% }); %>
+<%
+	var numPages = Math.ceil(total / limit);
+	var pageNum = Math.floor(index / limit);
+	var nextIndex = Math.min((pageNum + 1), numPages - 1) * limit; 
+	var prevIndex = Math.max((pageNum - 1), 0) * limit;
+	var lastIndex = (numPages - 1) * limit;
+	
+	if (total > 0) {
+		$('#firstPage').unbind("click").click(function(event) {
+			searchCustomers({
+				"name": name,
+				"index": 0,
+				"chunkSize": limit
+			});
+		}).show();
+		
+		$('#prevPage').unbind("click").click(function(event) {
+			searchCustomers({
+				"name": name,
+				"index": prevIndex,
+				"chunkSize": limit
+			});
+		}).show();
+		
+		$('#pageNum').html(pageNum + 1);
+		$('#numPages').html(numPages);
+		$('#paginationTitle').show();
+		
+		$('#nextPage').unbind("click").click(function(event) {
+			searchCustomers({
+				"name": name,
+				"index": nextIndex,
+				"chunkSize": limit
+			});
+		}).show();
+	
+		$('#lastPage').unbind("click").click(function(event) {
+			searchCustomers({
+				"name": name,
+				"index": lastIndex,
+				"chunkSize": limit
+			});
+		}).show();
+	} else {
+		$('#firstPage').hide();
+		$('#prevPage').hide();
+		$('#paginationTitle').hide();
+		$('#nextPage').hide();
+		$('#lastPage').hide();
+	}
+	
+%>
+</script>

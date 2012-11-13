@@ -1,0 +1,8 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.jboss.jca.adapters.sap" services="export" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
+
