@@ -17,8 +17,8 @@ public class CustomerService {
 	private static final int DEFAULT_INDEX = 0;
 	private static final int DEFAULT_CHUNK_SIZE = 10;
 
-	private static final String INPUT_RECORD_NAME = "INPUT";
-	private static final String OUTPUT_RECORD_NAME = "OUTPUT";
+	private static final String INPUT_RECORD_NAME = "BAPI_FLCUST_GETLIST.INPUT_RECORD";
+	private static final String OUTPUT_RECORD_NAME = "BAPI_FLCUST_GETLIST.OUTPUT_RECORD";
 
 	private static final String GET_CUSTOMER_LIST_FUNC = "BAPI_FLCUST_GETLIST";
 
