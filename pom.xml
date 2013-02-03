@@ -164,7 +164,7 @@
         </dependency>
         <dependency>
         	<groupId>org.jboss.jca.adapters</groupId>
-        	<artifactId>jboss-sap-jca-api</artifactId>
+        	<artifactId>jboss-sap-jca-connector</artifactId>
         	<version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -281,4 +281,12 @@
         </profile>
 
     </profiles>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+    
 </project>

@@ -7,7 +7,8 @@ import javax.resource.cci.IndexedRecord;
 import javax.resource.cci.Interaction;
 import javax.resource.cci.MappedRecord;
 
-import org.jboss.jca.adapters.sap.cci.JBossSAPInteractionSpec;
+import org.jboss.jca.adapters.sap.cci.CciFactory;
+import org.jboss.jca.adapters.sap.cci.InteractionSpec;
 import org.jboss.jca.adapters.sap.demo.model.Customer;
 import org.jboss.jca.adapters.sap.demo.model.CustomerList;
 
@@ -79,7 +80,7 @@ public class CustomerService {
 		try {
 			connection = connectionFactory.getConnection();
 			Interaction interaction = connection.createInteraction();
-			JBossSAPInteractionSpec interactionSpec = new JBossSAPInteractionSpec();
+			InteractionSpec interactionSpec = CciFactory.INSTANCE.createInteractionSpec();
 			interactionSpec.setFunctionName(GET_CUSTOMER_LIST_FUNC);
 
 			MappedRecord input = connectionFactory.getRecordFactory().createMappedRecord(INPUT_RECORD_NAME);
@@ -137,7 +138,7 @@ public class CustomerService {
 		try {
 			connection = connectionFactory.getConnection();
 			Interaction interaction = connection.createInteraction();
-			JBossSAPInteractionSpec interactionSpec = new JBossSAPInteractionSpec();
+			InteractionSpec interactionSpec = CciFactory.INSTANCE.createInteractionSpec();
 			interactionSpec.setFunctionName(GET_CUSTOMER_LIST_FUNC);
 
 			// Build parameters for customer search.
